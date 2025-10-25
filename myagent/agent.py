@@ -42,7 +42,7 @@ while True:
     if not customer_name:
         print("Pizza Lover: Before we get started, what is your name")
         customer_name = input("You: ")
-        print(f"Pizza Lover: Great, {customer_name}! Let's builld your perfect pizza")
+        print(f"Pizza Lover: Great, {customer_name}! Let's build your perfect pizza")
         continue
 
     if not any(keyword in user_input.lower() for keyword in pizza_keywords):
