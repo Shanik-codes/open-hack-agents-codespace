@@ -49,6 +49,8 @@ while True:
         print("Pizza Lover: I'm all about pizza! Ask me anything crusty, cheesy, or saucy")
         continue
 
+    enriched_input = f"My name is {customer_name}. {user_input}"
+
     # Add a message to the thread
     message = project_client.agents.messages.create(
         thread_id=thread.id,
