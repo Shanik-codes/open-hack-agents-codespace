@@ -26,6 +26,8 @@ print(f"Created agent, ID: {agent.id}")
 thread = project_client.agents.threads.create()
 print(f"Created thread, ID: {thread.id}")
 
+customer_name = None
+pizza_keywords = ["pizza", "crust", "topping", "order", "sauce", "cheese", "pepperoni", "menu", "size", "slice"]
 
 while True:
 
@@ -44,7 +46,8 @@ while True:
         continue
 
     if not any(keyword in user_input.lower() for keyword in pizza_keywords):
-        print()
+        print("Pizza Lover: I'm all about pizza! Ask me anything crusty, cheesy, or saucy")
+        continue
 
     # Add a message to the thread
     message = project_client.agents.messages.create(
