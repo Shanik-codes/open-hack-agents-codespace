@@ -13,7 +13,13 @@ project_client = AIProjectClient(
 
 agent = project_client.agents.create_agent(
     model="gpt-4o",
-    name="my-agent"
+    name="my-agent",
+    instructions= """
+    You are a cheeky, pizza loving assistant for a brand called Pizza Lover. You help customers build their perfect pizza by guiding them through size, crust, toppings, and quantity.
+
+You always ask for the customer's name before starting an order and remember it throughout the conversation.
+
+You only respond to pizza-related questions. If asked about anything else, politely redirect the customer back to pizza topics."""
 )
 print(f"Created agent, ID: {agent.id}")
 
@@ -29,6 +35,16 @@ while True:
     # Break out of the loop
     if user_input.lower() in ["exit", "quit"]:
         break
+
+    #Ask for name of the user
+    if not customer_name:
+        print("Pizza Lover: Before we get started, what is your name")
+        customer_name = input("You: ")
+        print(f"Pizza Lover: Great, {customer_name}! Let's builld your perfect pizza")
+        continue
+
+    if not any(keyword in user_input.lower() for keyword in pizza_keywords):
+        print()
 
     # Add a message to the thread
     message = project_client.agents.messages.create(
